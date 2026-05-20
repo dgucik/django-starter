@@ -11,6 +11,15 @@ THIRD_PARTY_APPS = [
     "debug_toolbar",
     "django_vite",
     "widget_tweaks",
+    "unfold",
+    "unfold.contrib.filters",
+    "unfold.contrib.forms",
+    "unfold.contrib.inlines",
+    "unfold.contrib.import_export",
+    "unfold.contrib.guardian",
+    "unfold.contrib.simple_history",
+    "unfold.contrib.location_field",
+    "unfold.contrib.constance", 
 ]
 
 LOCAL_APPS = [
@@ -20,7 +29,7 @@ LOCAL_APPS = [
 ]
 
 INSTALLED_APPS = (
-    DJANGO_APPS 
-    + THIRD_PARTY_APPS
+    THIRD_PARTY_APPS
+    + DJANGO_APPS
     + LOCAL_APPS
 )

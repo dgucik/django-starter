@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Error 400 - Bad Request{% endblock %}
+
+{% block content %}
+<div class="m-auto max-w-md text-center py-12">
+    <p class="text-base font-semibold opacity-50">400</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-base-content sm:text-4xl">Bad request</h1>
+    <p class="mt-4 text-base opacity-70">The server could not understand the request due to malformed syntax. Please try again or refresh your session.</p>
+    <div class="mt-10">
+        <button onclick="window.location.reload()" class="inline-flex items-center justify-center rounded-md bg-base-100 border border-base-300 px-4 py-2.5 text-sm font-medium shadow-sm hover:bg-base-200 transition-colors">
+            Refresh Page
+        </button>
+    </div>
+</div>
+{% endblock %}

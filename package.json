@@ -1,0 +1,30 @@
+{
+  "name": "django-base",
+  "version": "1.0.0",
+  "description": "+ settings divided + tailwindcss + node + DaisyUI installed",
+  "main": "vite.config.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgucik/django-base.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dgucik/django-base/issues"
+  },
+  "homepage": "https://github.com/dgucik/django-base#readme",
+  "devDependencies": {
+    "vite": "^8.0.13"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "htmx.org": "^2.0.10",
+    "tailwindcss": "^4.3.0"
+  }
+}

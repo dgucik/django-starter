@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Error 403 - Forbidden{% endblock %}
+
+{% block content %}
+<div class="m-auto max-w-md text-center py-12">
+    <p class="text-base font-semibold text-accent">403</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-base-content sm:text-4xl">Access denied</h1>
+    <p class="mt-4 text-base opacity-70">You do not have the required permissions to access this corporate resource. Contact your administrator if this is an error.</p>
+    <div class="mt-10">
+        <a href="/" class="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2.5 text-sm font-medium text-white shadow hover:bg-secondary/90 transition-colors">
+            Return Home
+        </a>
+    </div>
+</div>
+{% endblock %}

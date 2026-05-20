@@ -1,0 +1,31 @@
+<header class="bg-base-100 border-b border-base-300 shadow-sm">
+    <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-6">
+            <a href="{% url 'home' %}" class="text-xl font-bold tracking-tight text-primary">
+                MyApp
+            </a>
+            <nav class="hidden md:flex items-center gap-4 text-sm font-medium opacity-80">
+                <a href="{% url 'home' %}" class="hover:text-primary transition-colors">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-primary transition-colors">About</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-3">
+            {% if user.is_authenticated %}
+                <span class="hidden sm:flex items-center gap-2 text-sm text-base-content bg-base-200 px-3 py-1.5 rounded-lg border border-base-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                    {{ user.username }}
+                </span>
+                <form hx-boost="false" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="rounded-lg border border-base-300 px-3 py-1.5 text-sm font-medium text-base-content hover:bg-base-200 cursor-pointer transition-colors">
+                        Logout
+                    </button>
+                </form>
+            {% else %}
+                <a hx-boost="false" href="{% url 'login' %}" class="rounded-lg bg-primary px-3 py-1.5 text-sm font-medium text-base-100 hover:opacity-90 transition-opacity">
+                    Login
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</header>

@@ -10,10 +10,13 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "debug_toolbar",
     "django_vite",
+    "widget_tweaks",
 ]
 
 LOCAL_APPS = [
     "apps.core",
+    "apps.pages",
+    "apps.users",
 ]
 
 INSTALLED_APPS = (

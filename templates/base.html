@@ -4,46 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Application{% endblock %}</title>
+    <title>{% block title %}{% endblock %} - MyApp</title>
 
     <!-- Vite HMR Client -->
     {% vite_hmr_client %}
 
     <!-- Vite Assets -->
+    {% vite_asset 'static/css/main.css' %}
     {% vite_asset 'static/js/main.js' %}
     
     {% block extra_head %}{% endblock %}
 </head>
-<body class="min-h-screen bg-base-200 text-base-content flex flex-col antialiased">
+<body
+    hx-boost="true"
+    hx-target="#main"
+    hx-select="#main"
+    hx-swap="outerHTML"
+    hx-push-url="true"
+    class="min-h-screen bg-base-200 text-base-content flex flex-col antialiased"
+>
 
-<!-- NAVBAR -->
-<header class="bg-base-100 border-b border-base-300 shadow-sm">
-    <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-        <div class="flex items-center gap-6">
-            <a href="/" class="text-xl font-bold tracking-tight text-primary">
-                MyApp
-            </a>
-            <nav class="hidden md:flex items-center gap-4 text-sm font-medium opacity-80">
-                <a href="/" class="hover:text-primary transition-colors">Home</a>
-                <a href="#" class="hover:text-primary transition-colors">Reports</a>
-            </nav>
-        </div>
-    </div>
-</header>
+{% block navbar %}
+    {% include 'includes/navbar.html' %}
+{% endblock %}
 
-<!-- MAIN CONTENT -->
-<main class="container mx-auto px-4 py-10 flex-1 flex flex-col">
+
+<main id="main" class="container mx-auto px-4 py-10 flex-1 flex flex-col">
     {% block content %}{% endblock %}
 </main>
 
-<!-- FOOTER -->
-<footer class="bg-base-100 border-t border-base-300 py-6 mt-auto">
-    <div class="container mx-auto px-4 text-center">
-        <p class="text-sm opacity-60">
-            &copy; {% now "Y" %} MyApp — Built with Django & Tailwind Architecture
-        </p>
-    </div>
-</footer>
+{% block footer %}
+    {% include 'includes/footer.html' %}
+{% endblock %}
 
 {% block extra_body %}{% endblock %}
 </body>

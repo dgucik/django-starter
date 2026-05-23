@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 
-from apps.pages.views import HomePageView, AboutPageView, LoginPageView
+from pages.views import HomePageView, AboutPageView, LoginPageView
 
 def get_urls():
     return [

@@ -23,8 +23,8 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "apps.core",
-    "apps.pages",
+    "core",
+    "pages",
     "apps.users",
 ]
 

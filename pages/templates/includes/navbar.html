@@ -1,4 +1,11 @@
-<header class="bg-base-100 border-b border-base-300 shadow-sm">
+<header
+    hx-boost="true"
+    hx-target="#main"
+    hx-select="#main"
+    hx-swap="outerHTML"
+    hx-push-url="true"
+    class="bg-base-100 border-b border-base-300 shadow-sm"
+>
     <div class="container mx-auto px-4 h-16 flex items-center justify-between">
         <div class="flex items-center gap-6">
             <a href="{% url 'home' %}" class="text-xl font-bold tracking-tight text-primary">

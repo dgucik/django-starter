@@ -14,14 +14,7 @@
     
     {% block extra_head %}{% endblock %}
 </head>
-<body
-    hx-boost="true"
-    hx-target="#main"
-    hx-select="#main"
-    hx-swap="outerHTML"
-    hx-push-url="true"
-    class="min-h-screen bg-base-200 text-base-content flex flex-col antialiased"
->
+<body class="min-h-screen bg-base-200 text-base-content flex flex-col antialiased">
 
 {% block navbar %}
     {% include 'includes/navbar.html' %}

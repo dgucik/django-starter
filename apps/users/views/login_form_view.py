@@ -6,7 +6,20 @@ from django.urls import reverse
 from django.views import View
 
 
-class LoginActionView(View):
+class LoginFormView(View):
+
+    template_name = "users/login_form.html"
+
+    def get(self, request):
+        form = AuthenticationForm()
+
+        return render(
+            request,
+            self.template_name,
+            {
+                "form": form
+            }
+        )
 
     def post(self, request):
         form = AuthenticationForm(
@@ -17,7 +30,7 @@ class LoginActionView(View):
         if not form.is_valid():
             return render(
                 request,
-                "users/partials/login_form.html",
+                self.template_name,
                 {
                     "form": form
                 },

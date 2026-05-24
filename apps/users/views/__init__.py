@@ -1,7 +1,5 @@
-from .login_form_partial_view import LoginFormPartialView
-from .login_action_view import LoginActionView
+from .login_form_view import LoginFormView
 
 __all__ = [
-    "LoginFormPartialView",
-    "LoginActionView"
+    "LoginFormView"
 ]

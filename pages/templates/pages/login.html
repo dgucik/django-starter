@@ -29,30 +29,22 @@ Login
 
         </div>
 
-        <form
-            hx-post="{% url 'users:login-action' %}"
+        <div
+            id="login-form-container"
 
-            hx-target="#login-form-fields"
+            hx-get="{% url 'users:login-form' %}"
 
-            hx-swap="innerHTML"
-
-            class="space-y-5"
+            hx-trigger="load"
         >
-            {% csrf_token %}
-
-            <div
-                id="login-form-fields"
-
-                hx-get="{% url 'users:login-form-partial' %}"
-
-                hx-trigger="load"
-            >
-            </div>
-
-        </form>
+        </div>
 
     </div>
 
 </div>
 
 {% endblock %}
+
+
+
+
+

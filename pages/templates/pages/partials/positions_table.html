@@ -11,7 +11,7 @@
             </thead>
             <tbody
                 id="positions-tbody"
-                hx-get="{% url 'positions-partial' %}"
+                hx-get="{% url 'positions' %}"
                 hx-trigger="load, positionsSaved from:body"
                 hx-swap="innerHTML"
             >
@@ -21,7 +21,7 @@
 
     <div class="flex gap-2">
         <button
-            hx-get="{% url 'positions' %}"
+            hx-get="{% url 'positions-row' %}"
             hx-target="#positions-tbody"
             hx-swap="beforeend"
             class="rounded-lg border border-base-300 px-4 py-2 text-sm font-medium cursor-pointer hover:bg-base-200"

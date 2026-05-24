@@ -51,12 +51,14 @@ POSITIONS = [
     {"id": 2, "product": "Widget B", "quantity": 1, "price": "49.00"},
 ]
 
-
-class PositionsView(View):
+# PositionPartialView
+class PositionsListView(View):
     def get(self, request):
         forms = [PositionForm(initial=p) for p in POSITIONS]
         return render(request, "pages/partials/positions_tbody.html", {"forms": forms})
 
+# PositionSaveAllActionView
+class PositionsView(PositionsListView):
     def post(self, request):
         print(request.POST)
 
@@ -78,7 +80,7 @@ class PositionsView(View):
         response["HX-Trigger"] = "positionsSaved"
         return response
 
-
+# PositionNewRowPartialView
 class PositionRowView(View):
     def get(self, request):
         return render(request, "pages/partials/positions_row_form.html", {"form": PositionForm()})

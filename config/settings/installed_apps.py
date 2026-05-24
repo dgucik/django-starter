@@ -1,3 +1,5 @@
+from config.settings.env import settings
+
 DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -7,9 +9,8 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-from config.settings.env import settings
-
 THIRD_PARTY_APPS = [
+    *(["debug_toolbar"] if settings.DEBUG else []),
     "django_vite",
     "widget_tweaks",
     "unfold",
@@ -20,7 +21,7 @@ THIRD_PARTY_APPS = [
     "unfold.contrib.guardian",
     "unfold.contrib.simple_history",
     "unfold.contrib.location_field",
-    "unfold.contrib.constance", 
+    "unfold.contrib.constance",
 ]
 
 LOCAL_APPS = [
@@ -33,5 +34,4 @@ INSTALLED_APPS = (
     THIRD_PARTY_APPS
     + DJANGO_APPS
     + LOCAL_APPS
-    + (["debug_toolbar"] if settings.DEBUG else [])
 )

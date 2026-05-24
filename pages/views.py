@@ -58,7 +58,7 @@ class PositionsListView(View):
         return render(request, "pages/partials/positions_tbody.html", {"forms": forms})
 
 # PositionSaveAllActionView
-class PositionsView(PositionsListView):
+class PositionsSaveView(View):
     def post(self, request):
         print(request.POST)
 

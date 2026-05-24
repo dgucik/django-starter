@@ -1,10 +1,11 @@
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
+from django.views.generic import FormView
 
-from core.views import FormView
+from core.mixins import HtmxFormMixin
 
 
-class LoginFormView(FormView):
+class LoginFormView(HtmxFormMixin, FormView):
 
     template_name = "users/login_form.html"
     form_class = AuthenticationForm

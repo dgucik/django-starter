@@ -1,0 +1,39 @@
+<div class="space-y-4">
+    <div id="positions-form">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        <table class="w-full text-sm border border-base-300 rounded-lg overflow-hidden">
+            <thead class="bg-base-200 text-base-content font-medium">
+                <tr>
+                    <th class="px-4 py-2 text-left">Product</th>
+                    <th class="px-4 py-2 text-left">Quantity</th>
+                    <th class="px-4 py-2 text-left">Price</th>
+                </tr>
+            </thead>
+            <tbody
+                id="positions-tbody"
+                hx-get="{% url 'positions-partial' %}"
+                hx-trigger="load, positionsSaved from:body"
+                hx-swap="innerHTML"
+            >
+            </tbody>
+        </table>
+    </div>
+
+    <div class="flex gap-2">
+        <button
+            hx-get="{% url 'positions' %}"
+            hx-target="#positions-tbody"
+            hx-swap="beforeend"
+            class="rounded-lg border border-base-300 px-4 py-2 text-sm font-medium cursor-pointer hover:bg-base-200"
+        >
+            + Add
+        </button>
+        <button
+            hx-post="{% url 'positions' %}"
+            hx-include="#positions-form"
+            class="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-base-100 cursor-pointer"
+        >
+            Save
+        </button>
+    </div>
+</div>

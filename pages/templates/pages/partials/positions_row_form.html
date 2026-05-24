@@ -1,0 +1,9 @@
+{% load widget_tweaks %}
+<tr class="border-t border-base-300">
+    {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+    {% for field in form.visible_fields %}
+        <td class="px-4 py-2">
+            {% render_field field class="w-full rounded border border-base-300 bg-base-200 px-2 py-1 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary" %}
+        </td>
+    {% endfor %}
+</tr>

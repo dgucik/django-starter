@@ -7,8 +7,9 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
+from config.settings.env import settings
+
 THIRD_PARTY_APPS = [
-    "debug_toolbar",
     "django_vite",
     "widget_tweaks",
     "unfold",
@@ -32,4 +33,5 @@ INSTALLED_APPS = (
     THIRD_PARTY_APPS
     + DJANGO_APPS
     + LOCAL_APPS
+    + (["debug_toolbar"] if settings.DEBUG else [])
 )

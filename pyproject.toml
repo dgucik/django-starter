@@ -11,6 +11,8 @@ dependencies = [
     "django-vite>=3.1.0",
     "django-widget-tweaks>=1.5.1",
     "pydantic-settings>=2.14.1",
+    "gunicorn>=23.0.0",
+    "psycopg2-binary>=2.9.10",
 ]
 
 [dependency-groups]

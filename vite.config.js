@@ -17,7 +17,7 @@ export default defineConfig({
     outDir: resolve("./assets"),
     rollupOptions: {
       input: {
-        main: "static/js/main.js"
+        main: "static/js/main.js",
       }
     }
   }

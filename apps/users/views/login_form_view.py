@@ -3,47 +3,34 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
-from django.views import View
+
+from core.views import FormView
 
 
-class LoginFormView(View):
+class LoginFormView(FormView):
 
     template_name = "users/login_form.html"
+    form_class = AuthenticationForm
+    success_url = "home"
 
-    def get(self, request):
-        form = AuthenticationForm()
-
-        return render(
-            request,
-            self.template_name,
-            {
-                "form": form
-            }
-        )
-
-    def post(self, request):
-        form = AuthenticationForm(
-            request,
-            data=request.POST
-        )
-
-        if not form.is_valid():
-            return render(
-                request,
-                self.template_name,
-                {
-                    "form": form
-                },
-                status=400
-            )
-
+    def form_valid(self, form):
         login(
-            request,
+            self.request,
             form.get_user()
         )
 
         response = HttpResponse(status=204)
 
-        response["HX-Redirect"] = reverse("home")
+        response["HX-Redirect"] = reverse(self.success_url)
 
         return response
+
+    def form_invalid(self, form):
+        return render(
+            self.request,
+            self.template_name,
+            {
+                "form": form
+            },
+            status=400
+        )

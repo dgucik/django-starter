@@ -1,14 +1,12 @@
-from django.urls import reverse_lazy
-from django.views.generic import TemplateView
-from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class HomePageView(LoginRequiredMixin, TemplateView):
+from core.views import PageView
+
+class HomePageView(LoginRequiredMixin, PageView):
     template_name = 'pages/home.html'
 
-class AboutPageView(LoginRequiredMixin, TemplateView):
+class AboutPageView(LoginRequiredMixin, PageView):
     template_name = 'pages/about.html'
 
-class LoginPageView(TemplateView):
+class LoginPageView(PageView):
     template_name = "pages/login.html"

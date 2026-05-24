@@ -1,4 +1,4 @@
-.PHONY: migrate dev
+.PHONY: migrate dev prod
 
 migrate:
 	uv run python manage.py makemigrations
@@ -7,3 +7,6 @@ migrate:
 dev:
 	npm run dev &
 	uv run python manage.py runserver 0.0.0.0:8000
+
+prod:
+	docker compose --env-file .env up --build

@@ -1,35 +1,58 @@
 {% extends "base.html" %}
-{% load widget_tweaks %}
 {% block navbar %}{% endblock %}
 {% block footer %}{% endblock %}
-{% block title %}Login{% endblock %}
+{% block title %}
+Login
+{% endblock %}
 {% block content %}
+
 <div class="m-auto w-full max-w-sm py-12">
-    
+
     <div class="bg-base-100 rounded-2xl border border-base-300 p-8 shadow-sm">
+
         <div class="text-center mb-8">
-        <a href="{% url 'home' %}" class="text-2xl font-bold tracking-tight text-primary">MyApp</a>
-        <h1 class="mt-4 text-3xl font-bold tracking-tight text-base-content">Welcome back</h1>
-        <p class="mt-2 text-sm opacity-60">Sign in to your account</p>
-    </div>
-        <form hx-boost="false" method="post" class="space-y-5">
+
+            <a
+                href="{% url 'home' %}"
+                class="text-2xl font-bold tracking-tight text-primary"
+            >
+                MyApp
+            </a>
+
+            <h1 class="mt-4 text-3xl font-bold tracking-tight text-base-content">
+                Welcome back
+            </h1>
+
+            <p class="mt-2 text-sm opacity-60">
+                Sign in to your account
+            </p>
+
+        </div>
+
+        <form
+            hx-post="{% url 'users:login-action' %}"
+
+            hx-target="#login-form-fields"
+
+            hx-swap="innerHTML"
+
+            class="space-y-5"
+        >
             {% csrf_token %}
-            {% for field in form %}
-                <div class="flex flex-col gap-1.5">
-                    <label class="text-sm font-medium text-base-content">{{ field.label }}</label>
-                    {% render_field field class="w-full rounded-lg border border-base-300 bg-base-200 px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary" %}
-                    {% if field.errors %}
-                        <p class="text-xs text-error">{{ field.errors|join:", " }}</p>
-                    {% endif %}
-                </div>
-            {% endfor %}
-            {% if form.non_field_errors %}
-                <p class="text-sm text-error">{{ form.non_field_errors|join:", " }}</p>
-            {% endif %}
-            <button type="submit" class="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-base-100 hover:opacity-90 cursor-pointer mt-2">
-                Sign in
-            </button>
+
+            <div
+                id="login-form-fields"
+
+                hx-get="{% url 'users:login-form-partial' %}"
+
+                hx-trigger="load"
+            >
+            </div>
+
         </form>
+
     </div>
+
 </div>
+
 {% endblock %}

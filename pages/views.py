@@ -10,6 +10,5 @@ class HomePageView(LoginRequiredMixin, TemplateView):
 class AboutPageView(LoginRequiredMixin, TemplateView):
     template_name = 'pages/about.html'
 
-class LoginPageView(LoginView):
+class LoginPageView(TemplateView):
     template_name = "pages/login.html"
-    redirect_authenticated_user = True

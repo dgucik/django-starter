@@ -1,6 +1,8 @@
+from django.http import HttpResponse
 from django.views import View
 from django.shortcuts import render
 from abc import ABC, abstractmethod
+from django.urls import reverse
 from django.views.generic import FormView as DjangoFormView, TemplateView as DjangoTemplateView
 
 class PageView(ABC, DjangoTemplateView):
@@ -9,9 +11,9 @@ class PageView(ABC, DjangoTemplateView):
 
     Handles page composition and layout orchestration.
     """
-    
+
     template_name = None
-    
+
 class FormView(ABC, DjangoFormView):
     """
     Base view for form lifecycle handling (GET + POST).
@@ -23,13 +25,13 @@ class FormView(ABC, DjangoFormView):
     form_class = None
     success_url = None
 
-    @abstractmethod
-    def form_valid(self, form):
-        ...
+    def form_valid(self, _form):
+        response = HttpResponse(status=204)
+        response["HX-Redirect"] = reverse(self.success_url)
+        return response
 
-    @abstractmethod
     def form_invalid(self, form):
-        ...
+        return render(self.request, self.template_name, {"form": form}, status=400)
 
 class PartialView(ABC, View):
     """

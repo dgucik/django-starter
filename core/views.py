@@ -1,7 +1,11 @@
+
+from abc import ABC
+
+from django.views import View
 from django.shortcuts import render
 from http import HTTPStatus
 
-class HtmxRequiredMixin:
+class HtmxView(ABC, View):
     def dispatch(self, request, *args, **kwargs):
         if not request.headers.get("HX-Request"):
             return self.handle_no_htmx()

@@ -2,11 +2,12 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse
 from django.urls import reverse
-from core.mixins import HtmxRequiredMixin
 from django.views import View
 from django.shortcuts import render
 
-class LoginFormView(HtmxRequiredMixin, View):
+from core.views import HtmxView
+
+class LoginFormView(HtmxView):
 
     template_name = "users/login_form.html"
     form_class = AuthenticationForm
